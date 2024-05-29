@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis of Trump and Biden Tweets</h1>
+    <p>Winner: {{ winner }}</p>
+
+    <h2>Sentiment Analysis Bar Chart</h2>
+    <img src="{{ url_for('static', filename='images/sentiment_plot.png') }}" alt="Sentiment Analysis Bar Chart">
+
+    <h2>WordCloud for Trump</h2>
+    <img src="{{ url_for('static', filename='images/trump_wordcloud.png') }}" alt="Trump WordCloud">
+
+    <h2>WordCloud for Biden</h2>
+    <img src="{{ url_for('static', filename='images/biden_wordcloud.png') }}" alt="Biden WordCloud">
+
+    <h2>Top 10 Trump Comments</h2>
+    <ul>
+        {% for comment in trump_comments %}
+            <li>{{ comment[0] }} - Sentiment: {{ comment[1] }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Top 10 Biden Comments</h2>
+    <ul>
+        {% for comment in biden_comments %}
+            <li>{{ comment[0] }} - Sentiment: {{ comment[1] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

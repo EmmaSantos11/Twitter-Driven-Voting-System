@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predictive Analysis</title>
+</head>
+<body>
+    <h1>Predictive Analysis</h1>
+    <form method="post">
+        <label for="new_tweet">New Tweet:</label>
+        <input type="text" id="new_tweet" name="new_tweet" required>
+        <br>
+        <label for="candidate">Candidate:</label>
+        <select id="candidate" name="candidate" required>
+            <option value="Trump">Trump</option>
+            <option value="Biden">Biden</option>
+        </select>
+        <br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if new_comment_prediction %}
+        <h2>Prediction Result</h2>
+        <p>New Comment Sentiment: {{ new_comment_prediction }}</p>
+        <p>Winner: {{ winner }}</p>
+    {% endif %}
+
+    <h2>Sentiment Analysis Bar Chart</h2>
+    <img src="{{ url_for('static', filename='images/updated_sentiment_plot.png') }}" alt="Sentiment Analysis Bar Chart">
+
+    <h2>Model Accuracy</h2>
+    <p>{{ accuracy }}</p>
+
+    <h2>Classification Report</h2>
+    <pre>{{ report }}</pre>
+
+    <h2>Positive and Negative Counts</h2>
+    <p>Trump: Positive - {{ positive_counts[0] }}, Negative - {{ negative_counts[0] }}</p>
+    <p>Biden: Positive - {{ positive_counts[1] }}, Negative - {{ negative_counts[1] }}</p>
+</body>
+</html>
